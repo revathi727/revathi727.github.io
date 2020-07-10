@@ -5,4 +5,4 @@ image: 08.jpg
 permalink: /about/
 ---
 
-My name is Prasanth Kanna Chitturi. I'm a Software Engineer
+My name is Revathi Polisetty. I'm a Software Engineer
