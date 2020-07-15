@@ -40,7 +40,7 @@ Arcs -> Playback control operations that drive the object state transition in th
 
 After setting the datasource and the display surface, you need to either call **prepare()** or **prepareAsync()**. For files, it is OK to call **prepare()**, which blocks until MediaPlayer is ready for playback. For streams, you should call **prepareAsync()**, which returns immediately, rather than blocking until enough data has been buffered.
 
-* **OnPreparedListener.onPrepared():** 
+* **OnPreparedListener.onPrepared():** A callback to be invoked when the media source is ready for playback.
 
 * **start():** Starts or resumes playback. If playback had previously been paused, playback will continue from where it was paused. If playback had been stopped, or never started before, playback will start at the beginning.
 
@@ -64,28 +64,32 @@ Call **start()** to resume.
 
 * **release():** Releases resources associated with this MediaPlayer object.
 
-
+It is considered good practice to call this method when you're done using the MediaPlayer. In particular, whenever an Activity of an application is paused, this method should be invoked to release the MediaPlayer object, unless the application has a special need to keep the object around. In addition to unnecessary resources (such as memory and instances of codecs) being held, failure to call this method immediately if a MediaPlayer object is no longer needed may also lead to continuous battery consumption for mobile devices, and playback failure for other applications if no multiple instances of the same codec are supported on a device. Even if multiple instances of the same codec are supported, some performance degradation may be expected when unnecessary multiple instances are used at the same time.
 
 * **reset():** Resets the MediaPlayer to its uninitialized state.
 
   After calling this method, you will have to initialize it again by setting the data source and calling prepare().
   
-* **OnCompleteListener on onCompletion():**
-* **OnErrorListener.onError():**
+* **OnCompleteListener on onCompletion():** A callback to be invoked when the end of a media source has been reached during playback.
 
-When a MediaPlayer object is just created using new or after reset() is called, it is in the Idle state; and after release() is called, it is in the End state. Between these two states is the life cycle of the MediaPlayer object.
+* **OnErrorListener.onError():** A callback to be invoked when an error has happened during an asynchronous operation.
+
+
+**The Life cycle of MediaPlayer object is in between **IDLE** and **END** states.**
 
 ### STATES
 
-* **IDLE:**
-* **INITIALIZED:**
+* **IDLE:** When a MediaPlayer object is just created using **new** or after **reset()** is called, it is in the **IDLE** state.
+
+* **END:** After **release()** is called, the MediaPlayer object is in the **END** state.
+
+* **INITIALIZED:** 
 * **PREPARING:**
 * **PREPARED:**
 * **STARTED:**
 * **STOPPED:**
 * **PAUSED:**
 * **PLAYBACKCOMPLETED:**
-* **END:**
 * **ERROR**
 
 ### REFERENCES
