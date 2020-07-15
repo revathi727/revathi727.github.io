@@ -26,6 +26,55 @@ Arcs -> Playback control operations that drive the object state transition in th
 
 ![]({{site.baseurl}}/img/mediaplayer_state_diagram.gif)
 
+### OPERATIONS
+
+* **new:** Creates a new MediaPlayer object.
+  
+* **setDataSource():** Sets the data source (local FileDescriptor/ Streaming(HTTP/HLS/RTSP/...) source).
+
+* **prepare():** Prepares the player for playback, synchronously. 
+
+  Prepare process generally includes finding mime types, creating extractor and decoders.
+
+* **prepareAsync():** Prepares the player for playback, asynchronously.
+
+After setting the datasource and the display surface, you need to either call **prepare()** or **prepareAsync()**. For files, it is OK to call **prepare()**, which blocks until MediaPlayer is ready for playback. For streams, you should call **prepareAsync()**, which returns immediately, rather than blocking until enough data has been buffered.
+
+* **OnPreparedListener.onPrepared():** 
+
+* **start():** Starts or resumes playback. If playback had previously been paused, playback will continue from where it was paused. If playback had been stopped, or never started before, playback will start at the beginning.
+
+* **seekTo():** Seeks to specified time position. 
+
+When seekTo is finished, the user will be notified via **OnSeekComplete** supplied by the user. There is at most one active **seekTo()** processed at any time. If there is a to-be-completed **seekTo()**, new **seekTo()** requests will be queued in such a way that only the last request is kept. When current **seekTo()** is completed, the queued request will be processed if that request is different from just-finished **seekTo()** operation, i.e., the requested position or mode is different.
+
+Different modes of seek:
+  * Use **SEEK_PREVIOUS_SYNC** if one wants to seek to a sync frame that has a timestamp earlier than or the same as msec. 
+  * Use **SEEK_NEXT_SYNC** if one wants to seek to a sync frame that has a timestamp later than or the same as msec. 
+  * Use **SEEK_CLOSEST_SYNC** if one wants to seek to a sync frame that has a timestamp closest to or the same as msec. 
+  * Use **SEEK_CLOSEST** if one wants to seek to a frame that may or may not be a sync frame but is closest to or the same as msec.
+
+**SEEK_CLOSEST** often has larger performance overhead compared to the other options if there is no sync frame located at msec.
+
+* **stop():** Stops playback after playback has been started or paused.
+
+* **pause():** Pauses playback. 
+
+Call **start()** to resume.
+
+* **release():** Releases resources associated with this MediaPlayer object.
+
+
+
+* **reset():** Resets the MediaPlayer to its uninitialized state.
+
+  After calling this method, you will have to initialize it again by setting the data source and calling prepare().
+  
+* **OnCompleteListener on onCompletion():**
+* **OnErrorListener.onError():**
+
+When a MediaPlayer object is just created using new or after reset() is called, it is in the Idle state; and after release() is called, it is in the End state. Between these two states is the life cycle of the MediaPlayer object.
+
 ### STATES
 
 * **IDLE:**
@@ -38,24 +87,6 @@ Arcs -> Playback control operations that drive the object state transition in th
 * **PLAYBACKCOMPLETED:**
 * **END:**
 * **ERROR**
-
-### OPERATIONS
-
-* **new**
-* **reset()**
-* **setDataSource()**
-* **prepare()**
-* **prepareAsync()**
-* **OnPreparedListener.onPrepared()**
-* **start()**
-* **seekTo()**
-* **stop()**
-* **pause()**
-* **release()**
-* **OnCompleteListener on onCompletion()**
-* **OnErrorListener.onError()**
-
-When a MediaPlayer object is just created using new or after reset() is called, it is in the Idle state; and after release() is called, it is in the End state. Between these two states is the life cycle of the MediaPlayer object.
 
 ### REFERENCES
 * <https://developer.android.com/reference/android/media/MediaPlayer>
