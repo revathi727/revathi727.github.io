@@ -77,4 +77,4 @@ The entire feature-set of the Android OS is available through APIs written in th
 Android comes with a set of core apps for email, SMS messaging, calendars, internet browsing, contacts, and more. Developers can also make apps and set them as default(except Settings).
 
 ### REFERENCES
-* [1] <https://developer.android.com/guide/platform>
+* <https://developer.android.com/guide/platform>
