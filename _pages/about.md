@@ -11,7 +11,7 @@ Hi. I'm REVATHI POLISETTY.
 
 Email : revathipolisetty7@gmail.com
 
-Blog : <revathi727.github.io>
+Blog : revathi727.github.io
 
 ### WORK EXPERIENCE
 
