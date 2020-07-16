@@ -50,10 +50,13 @@ When seekTo is finished, the user will be notified via **OnSeekComplete** suppli
 
   Different modes of seek:
 
-  * Use **SEEK_PREVIOUS_SYNC** if one wants to seek to a sync frame that has a timestamp earlier than or the same as msec.
-  * Use **SEEK_NEXT_SYNC** if one wants to seek to a sync frame that has a timestamp later than or the same as msec.
-  * Use **SEEK_CLOSEST_SYNC** if one wants to seek to a sync frame that has a timestamp closest to or the same as msec.
-  * Use **SEEK_CLOSEST** if one wants to seek to a frame that may or may not be a sync frame but is closest to or the same as msec.
+  -- Use **SEEK_PREVIOUS_SYNC** if one wants to seek to a sync frame that has a timestamp earlier than or the same as msec.
+  
+  -- Use **SEEK_NEXT_SYNC** if one wants to seek to a sync frame that has a timestamp later than or the same as msec.
+  
+  -- Use **SEEK_CLOSEST_SYNC** if one wants to seek to a sync frame that has a timestamp closest to or the same as msec.
+  
+  -- Use **SEEK_CLOSEST** if one wants to seek to a frame that may or may not be a sync frame but is closest to or the same as msec.
 
 **SEEK_CLOSEST** often has larger performance overhead compared to the other options if there is no sync frame located at msec.
 
