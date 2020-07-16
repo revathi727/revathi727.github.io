@@ -4,7 +4,7 @@ title: "Android MediaPlayer"
 date: 2020-07-13 19:30
 category: 
 author: Revathi Polisetty
-tags: [Android]
+tags: [Android, Video]
 description: Life cycle of Android MediaPlayer State Diagram
 image: mediaplayer.jpg
 ---
