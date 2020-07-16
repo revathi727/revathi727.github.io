@@ -5,4 +5,17 @@ image: 08.jpg
 permalink: /about/
 ---
 
-My name is Revathi Polisetty. I'm a Software Engineer
+Hi. I'm REVATHI POLISETTY.
+
+## CONTACT INFO
+
+Email : revathipolisetty7@gmail.com
+Blog : revathi727.github.io
+
+## WORK EXPERIENCE
+
+Software Engineer at Samsung Electronics (2019 - Present).
+
+## EDUCATION
+
+B.Tech in Computer Science Engineering at Maulana Azad National Institute of Technology (2015 - 2019).
