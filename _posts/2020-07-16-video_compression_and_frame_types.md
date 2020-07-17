@@ -15,6 +15,8 @@ A picture can be either a frame or a field. A frame is a complete image. A field
 
 When video is sent in **interlaced-scan** format, each frame is sent in two fields, the field of odd-numbered lines followed by the field of even-numbered lines.
 
+A frame used as a reference for predicting other frames is called a **reference frame**.
+
 #### TYPES OF VIDEO COMPRESSION
 
 Based on loss of data:
@@ -41,8 +43,6 @@ A device that performs data compression is referred to as an encoder, and one th
 In the field of video compression a video frame is compressed(encoded) using different algorithms with different advantages and disadvantages, centered mainly around amount of data compression. 
 
 These different algorithms for video frames are called picture types or frame types.
-
-A frame used as a reference for predicting other frames is called a **reference frame**.
 
 There are three major picture types or frame types used in the different video algorithms.
 
