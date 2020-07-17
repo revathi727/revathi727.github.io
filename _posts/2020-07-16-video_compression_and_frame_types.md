@@ -11,10 +11,9 @@ image: videocompression.jpg
 
 ## Video Compression and Frame Types
 
-{% highlight markdown %}
 A picture can be either a frame or a field. A frame is a complete image. A field is the set of odd-numbered or even-numbered scan lines composing a partial image.
 
-When video is sent in **interlaced-scan** format, each frame is sent in two fields, the field of odd-numbered lines followed by the field of even-numbered lines.{% endhighlight %}
+When video is sent in **interlaced-scan** format, each frame is sent in two fields, the field of odd-numbered lines followed by the field of even-numbered lines.
 
 #### TYPES OF VIDEO COMPRESSION
 
@@ -43,6 +42,8 @@ In the field of video compression a video frame is compressed(encoded) using dif
 
 These different algorithms for video frames are called picture types or frame types.
 
+A frame used as a reference for predicting other frames is called a **reference frame**.
+
 There are three major picture types or frame types used in the different video algorithms.
 
 * **I-FRAME (Intra-coded picture) or Key frame**:
@@ -51,17 +52,20 @@ There are three major picture types or frame types used in the different video a
   * Only spatial compression is possible.
   * These are expensive and utilize more of the allocated bit-rate.
   * Starting frame of any video is always an I-frame.
+  * No reference frames.
 
 * **P-FRAME (Predicted picture)**:
   * These frames use data from previous frames to decompress.
   * These are more compressible than I-frames.
   * Spatial/temporal compression is possible.
+  * One reference frame.
 
 * **B-FRAME (Bidirectional predicted picture)**:
   * These frames can use both previous and future frames for data reference.
   * These are the highest compressible frames.
   * Spatial/temporal compression is possible.
   * It requires frames reordering as it requires future frames reference.
+  * Two reference frames.
   
 #### Extract images from video using FFMPEG
 
